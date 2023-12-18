@@ -1,0 +1,83 @@
+
+
+<header class="header">
+  <div class="headline">
+       <h1 style="font-family: Roboto;">Colaboradores engajados</h1>
+       <h2 style="font-family: Roboto;" >SegTrab Digital</h2>
+       <p style="font-family: Roboto;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, aperiam,
+         officiis ex sed perspiciatis non fuga sequi porro eveniet facilis suscipit ]
+         temporibus ut ea necessitatibus labore harum iusto, culpa et.</p>
+       <a href="#" class="contact-btn">Contrate Agora</a>
+  </div>
+  <div class="img-headline">
+      <img [src]="myimage" style="max-width: 100%;">
+  </div>
+</header>
+
+<section>
+  <div class="img-section">
+    <h2 class="titulo">Venha fazer parte do nosso time</h2>
+    <!-- <img [src]="myimageColab" style="max-width: 100%;" class="image-colab" > -->
+    <!-- Seu componente de lista de colaboradores (colaboradores.component.html) -->
+    <div class="colab-list">
+      <h2 class="colab-list__title">Lista de Colaboradores:</h2>
+      <button class="colab-list__button" (click)="GetAllColab()">Obter Colaboradores</button>
+      <ul class="colab-list__ul">
+        <li *ngFor="let colab of colabList$ | async" class="colab-list__item">
+          <p class="colab-list__item-name">
+            Nome: {{ colab.nome }}
+          </p>
+          <p class="colab-list__item-name">
+            Endereço: {{ colab.endereco }}
+          </p>
+          <p class="colab-list__item-name">
+            Cidade: {{colab.cidade}}
+          </p>
+          <button class="botao_alterar" (click)="preencherCampos(colab)">Alterar</button>
+          <button class="botao_remover" (click)="deleteColab(colab.id)">Remover</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <form class="form" >
+    <h2 class="colab-list__title">Cadastro de Colaboradores:</h2>
+
+      <label>Usuário:</label>
+      <input type="text" [(ngModel)]="usuario" name="usuario" ><br>
+
+      <label>Senha:</label>
+      <input type="text" [(ngModel)]="senha" name="senha" ><br>
+
+      <label>Permissão ID:</label>
+      <input type="text" [(ngModel)]="permissaoId" name="permissaoId" ><br>
+
+      <label>ID da Empresa:</label>
+      <input type="text" [(ngModel)]="idEmpresa" name="idEmpresa" ><br>
+
+      <label>Nome:</label>
+      <input type="text" [(ngModel)]="nome" name="nome"><br>
+
+      <label>RG:</label>
+      <input type="text" [(ngModel)]="rg" name="rg" ><br>
+
+      <label>CPF:</label>
+      <input type="text" [(ngModel)]="cpf" name="cpf" ><br>
+
+      <label>Endereço:</label>
+      <input type="text" [(ngModel)]="endereco" name="endereco" ><br>
+
+      <label>Número do Endereço:</label>
+      <input type="text" [(ngModel)]="numeroEndereco" name="numeroEndereco" ><br>
+
+      <label>Cidade:</label>
+      <input type="text" [(ngModel)]="cidade" name="cidade" ><br>
+
+      <label>CEP:</label>
+      <input type="text" [(ngModel)]="cep" name="cep" ><br>
+
+      <button (click)="postColab()" class="button">
+        {{id ? 'Salvar': 'Cadastrar'}}
+      </button>
+  </form>
+</section>
+
